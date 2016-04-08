@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Code review check list</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".has-success").hide();
+				$("[type='checkbox']").click(function() {
+					validateForm();
+				});
+			});
+			function validateForm() {
+				if ($("[type='checkbox']:checked").length == $("[type='checkbox']").length) {
+					$(".has-success").show();
+					$(".has-error").hide();
+				} else {
+					$(".has-success").hide();
+					$(".has-error").show();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Have you checked everything?</h1>
+			<form action="javascript:validateForm();" class="horizontal">
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							The code reviewer understands correctly the purpose of the current ticket and he is aware of the impacts/uses relative to the changes.
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							Every Java class needs to follow conventions and to be clean (no unused variables and function for exemple).
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							There are enough tests to cover the new changes.
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							There is good demo content.
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							There are no demo content references in test contents.
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-default">Check</button>
+				</div>
+				<div class="has-error">
+					<img src="http://i.imgur.com/ryh89Vx.gif" alt="Booh!" class="img-responsive">
+				</div>
+				<div class="has-success">
+					<img src="http://i.imgur.com/S68B6Hs.gif" alt="Bravo!" class="img-responsive">
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
