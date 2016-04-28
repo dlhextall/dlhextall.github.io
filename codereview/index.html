@@ -8,24 +8,33 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$(".has-success").hide();
-				$("[type='checkbox']").click(function() {
-					validateForm();
+				$(".has-error").hide();
+
+				$("[type='submit']").click(function(){
+					$(".has-success").hide();
+					$(".has-error").hide();
+					if($("[type='checkbox']:not(:checked)").length == 0){
+						$(".has-success").show();
+					} else {
+						$(".has-error").show();
+					}
 				});
 			});
-			function validateForm() {
-				if ($("[type='checkbox']:checked").length == $("[type='checkbox']").length) {
-					$(".has-success").show();
-					$(".has-error").hide();
-				} else {
-					$(".has-success").hide();
-					$(".has-error").show();
-				}
-			}
 		</script>
 	</head>
 	<body>
 		<div class="container">
 			<h1>Have you checked everything?</h1>
+
+			<div class="has-error">
+				<h3 style="color:#f00;">Finish that code review BRO!</h3>
+				<img src="http://i.imgur.com/ryh89Vx.gif" alt="Booh!" class="img-responsive" width="200" height="200">
+			</div>
+			<div class="has-success">
+				<h3 style="color:#0F0;">Perfect Captain!</h3>
+				<img src="http://i.imgur.com/S68B6Hs.gif" alt="Bravo!" class="img-responsive" width="200" height="200">
+			</div>
+
 			<form action="javascript:validateForm();" class="horizontal">
 				<div class="form-group">
 					<div class="checkbox">
@@ -76,13 +85,24 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							All edges cases has been tested together (ex : Success flows, Errors flows, etc.)
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="">
+							If a new template has been created, there is index mapping tests.
+						</label>
+					</div>
+				</div>
+				
+				<div class="form-group">
 					<button type="submit" class="btn btn-default">Check</button>
-				</div>
-				<div class="has-error">
-					<img src="http://i.imgur.com/ryh89Vx.gif" alt="Booh!" class="img-responsive">
-				</div>
-				<div class="has-success">
-					<img src="http://i.imgur.com/S68B6Hs.gif" alt="Bravo!" class="img-responsive">
 				</div>
 			</form>
 		</div>
