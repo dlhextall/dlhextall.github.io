@@ -6,7 +6,7 @@ $(document).ready(function() {
     }
 
     var images = new Array();
-    $.getJSON("http://www.reddit.com/r/cinemagraphs+perfectloops+loadingicon/.json?jsonp=?", function(data) { 
+    $.getJSON("http://www.reddit.com/r/cinemagraphs+perfectloops+loadingicon/.json?jsonp=?", function(data) {
         $.each(data.data.children, function(i,item){
             if (!item.data.over_18) {
                 var imgurl = item.data.url;
@@ -17,6 +17,6 @@ $(document).ready(function() {
                 }
             }
         });
-        $("img.bg").attr('src', getRandomImage(images));
+        $("#bg img").attr('src', getRandomImage(images));
     });
 });
